@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://importadorasubateria.com/xmlrpc.php">
+	
+	
+	<meta property="og:description" content="Encuentra una gama completa en baterías en las marcas Bosch, Rocket y Baterías Ecuador. Elige la mejor para ti, según tus necesidades." />
+
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v22.6 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>FH12 6X4 420 archivos - Subateria</title>
+	<link rel="canonical" href="https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/" />
+	<meta property="og:locale" content="es_ES" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="FH12 6X4 420 archivos - Subateria" />
+	<meta property="og:url" content="https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/" />
+	<meta property="og:site_name" content="Subateria" />
+	<meta property="og:image" content="https://importadorasubateria.com/wp-content/uploads/2023/04/slider-home2-e1682027558869.webp" />
+	<meta property="og:image:width" content="1141" />
+	<meta property="og:image:height" content="924" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/","url":"https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/","name":"FH12 6X4 420 archivos - Subateria","isPartOf":{"@id":"https://importadorasubateria.com/#website"},"breadcrumb":{"@id":"https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/#breadcrumb"},"inLanguage":"es"},{"@type":"BreadcrumbList","@id":"https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://importadorasubateria.com/"},{"@type":"ListItem","position":2,"name":"Productos","item":"https://importadorasubateria.com/shop/"},{"@type":"ListItem","position":3,"name":"Camiones","item":"https://importadorasubateria.com/product-category/camiones/"},{"@type":"ListItem","position":4,"name":"Volvo","item":"https://importadorasubateria.com/product-category/camiones/volvo-camiones/"},{"@type":"ListItem","position":5,"name":"FH12 6X4 420"}]},{"@type":"WebSite","@id":"https://importadorasubateria.com/#website","url":"https://importadorasubateria.com/","name":"Subateria","description":"Encuentra una gama completa en baterías en las marcas Bosch, Rocket y Baterías Ecuador. Elige la mejor para ti, según tus necesidades.","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://importadorasubateria.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"es"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel="alternate" type="application/rss+xml" title="Subateria &raquo; Feed" href="https://importadorasubateria.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Subateria &raquo; Feed de los comentarios" href="https://importadorasubateria.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Subateria &raquo; FH12 6X4 420 Categoría Feed" href="https://importadorasubateria.com/product-category/camiones/volvo-camiones/fh12-6x4-420/feed/" />
+<link data-minify="1" rel='stylesheet' id='formidable-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/formidable/css/formidableforms.css?ver=1714084021' type='text/css' media='all' />
+<link rel='stylesheet' id='berocket_aapf_widget-style-css' href='https://importadorasubateria.com/wp-content/plugins/woocommerce-ajax-filters/assets/frontend/css/fullmain.min.css?ver=1.6.4.5' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='ht_ctc_main_css-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/click-to-chat-for-whatsapp/new/inc/assets/css/main.css?ver=1714084021' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://importadorasubateria.com/wp-includes/css/dist/block-library/style.min.css?ver=d9df1a11952db441a83d70fd670f3827' type='text/css' media='all' />
+<style id='safe-svg-svg-icon-style-inline-css' type='text/css'>
+.safe-svg-cover{text-align:center}.safe-svg-cover .safe-svg-inside{display:inline-block;max-width:100%}.safe-svg-cover svg{height:100%;max-height:100%;max-width:100%;width:100%}
+
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link data-minify="1" rel='stylesheet' id='slick-css-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/themes/woodmart-child/slick.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='js_composer_front-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=1714084021' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css-css' href='https://importadorasubateria.com/wp-content/themes/woodmart/css/font-awesome-light.min.css?ver=4.6.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css' href='https://importadorasubateria.com/wp-content/themes/woodmart/css/bootstrap.min.css?ver=4.6.0' type='text/css' media='all' />
+<link rel='stylesheet' id='woodmart-style-css' href='https://importadorasubateria.com/wp-content/themes/woodmart/style.min.css?ver=4.6.0' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='xts-style-header_390885-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/uploads/2024/03/xts-header_390885-1710257068.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='xts-style-theme_settings_default-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/uploads/2024/03/xts-theme_settings_default-1711469381.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='child-style-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/themes/woodmart-child/style.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='select2-css-css' href='https://importadorasubateria.com/wp-content/cache/min/1/npm/select2@4.1.0-rc.0/dist/css/select2.min.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='font-gilroy-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/themes/woodmart-child/assets/fonts/Gilroy/stylesheet.css?ver=1714084021' type='text/css' media='all' />
+<script type="text/template" id="tmpl-variation-template">
+	<div class="woocommerce-variation-description">{{{ data.variation.variation_description }}}</div>
+	<div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
+	<div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
+</script>
+<script type="text/template" id="tmpl-unavailable-variation-template">
+	<p>Lo siento, este producto no está disponible. Por favor, elige otra combinación.</p>
+</script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.8.4.0" id="jquery-blockui-js" data-wp-strategy="defer" defer></script>
+<script type="text/javascript" id="wc-add-to-cart-js-extra">
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Ver carrito","cart_url":"https:\/\/importadorasubateria.com\/cart\/","is_cart":"","cart_redirect_after_add":"yes"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=8.4.0" id="wc-add-to-cart-js" data-wp-strategy="defer" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.8.4.0" id="js-cookie-js" data-wp-strategy="defer" defer></script>
+<script type="text/javascript" id="woocommerce-js-extra">
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=8.4.0" id="woocommerce-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=1714084021" id="vc_woocommerce-add-to-cart-js-js" defer></script>
+<script type="text/javascript" id="mcm-custom-scripts-js-extra">
+/* <![CDATA[ */
+var MCM = {"ajax_url":"https:\/\/importadorasubateria.com\/wp-admin\/admin-ajax.php","nonce":"7ef01263a5","page_url":"https:\/\/importadorasubateria.com","theme_url":"https:\/\/importadorasubateria.com\/wp-content\/themes\/woodmart-child"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/wp-content/themes/woodmart-child/main.js?ver=1714084021" id="mcm-custom-scripts-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/npm/select2@4.1.0-rc.0/dist/js/select2.min.js?ver=1714084021" id="select2-js-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/plugins/select-2-tutorial/select2-init.js?ver=4.1.0-rc.0" id="select2-init-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-includes/js/underscore.min.js?ver=1.13.4" id="underscore-js" defer></script>
+<script type="text/javascript" id="wp-util-js-extra">
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-includes/js/wp-util.min.js?ver=d9df1a11952db441a83d70fd670f3827" id="wp-util-js" defer></script>
+<script type="text/javascript" id="wc-add-to-cart-variation-js-extra">
+/* <![CDATA[ */
+var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_no_matching_variations_text":"Lo siento, no hay productos que igualen tu selecci\u00f3n. Por favor, escoge una combinaci\u00f3n diferente.","i18n_make_a_selection_text":"Elige las opciones del producto antes de a\u00f1adir este producto a tu carrito.","i18n_unavailable_text":"Lo siento, este producto no est\u00e1 disponible. Por favor, elige otra combinaci\u00f3n."};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=8.4.0" id="wc-add-to-cart-variation-js" defer="defer" data-wp-strategy="defer"></script>
+<link rel="https://api.w.org/" href="https://importadorasubateria.com/wp-json/" /><link rel="alternate" type="application/json" href="https://importadorasubateria.com/wp-json/wp/v2/product_cat/6524" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://importadorasubateria.com/xmlrpc.php?rsd" />
+<style></style><meta name="theme-color" content="">	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<meta name="generator" content="Powered by Slider Revolution 6.6.11 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<link rel="icon" href="https://importadorasubateria.com/wp-content/uploads/2023/07/cropped-logo-suba-1-32x32.webp" sizes="32x32" />
+<link rel="icon" href="https://importadorasubateria.com/wp-content/uploads/2023/07/cropped-logo-suba-1-192x192.webp" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://importadorasubateria.com/wp-content/uploads/2023/07/cropped-logo-suba-1-180x180.webp" />
+<meta name="msapplication-TileImage" content="https://importadorasubateria.com/wp-content/uploads/2023/07/cropped-logo-suba-1-270x270.webp" />
+<script>function setREVStartSize(e){
+			//window.requestAnimationFrame(function() {
+				window.RSIW = window.RSIW===undefined ? window.innerWidth : window.RSIW;
+				window.RSIH = window.RSIH===undefined ? window.innerHeight : window.RSIH;
+				try {
+					var pw = document.getElementById(e.c).parentNode.offsetWidth,
+						newh;
+					pw = pw===0 || isNaN(pw) || (e.l=="fullwidth" || e.layout=="fullwidth") ? window.RSIW : pw;
+					e.tabw = e.tabw===undefined ? 0 : parseInt(e.tabw);
+					e.thumbw = e.thumbw===undefined ? 0 : parseInt(e.thumbw);
+					e.tabh = e.tabh===undefined ? 0 : parseInt(e.tabh);
+					e.thumbh = e.thumbh===undefined ? 0 : parseInt(e.thumbh);
+					e.tabhide = e.tabhide===undefined ? 0 : parseInt(e.tabhide);
+					e.thumbhide = e.thumbhide===undefined ? 0 : parseInt(e.thumbhide);
+					e.mh = e.mh===undefined || e.mh=="" || e.mh==="auto" ? 0 : parseInt(e.mh,0);
+					if(e.layout==="fullscreen" || e.l==="fullscreen")
+						newh = Math.max(e.mh,window.RSIH);
+					else{
+						e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+						for (var i in e.rl) if (e.gw[i]===undefined || e.gw[i]===0) e.gw[i] = e.gw[i-1];
+						e.gh = e.el===undefined || e.el==="" || (Array.isArray(e.el) && e.el.length==0)? e.gh : e.el;
+						e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+						for (var i in e.rl) if (e.gh[i]===undefined || e.gh[i]===0) e.gh[i] = e.gh[i-1];
+											
+						var nl = new Array(e.rl.length),
+							ix = 0,
+							sl;
+						e.tabw = e.tabhide>=pw ? 0 : e.tabw;
+						e.thumbw = e.thumbhide>=pw ? 0 : e.thumbw;
+						e.tabh = e.tabhide>=pw ? 0 : e.tabh;
+						e.thumbh = e.thumbhide>=pw ? 0 : e.thumbh;
+						for (var i in e.rl) nl[i] = e.rl[i]<window.RSIW ? 0 : e.rl[i];
+						sl = nl[0];
+						for (var i in nl) if (sl>nl[i] && nl[i]>0) { sl = nl[i]; ix=i;}
+						var m = pw>(e.gw[ix]+e.tabw+e.thumbw) ? 1 : (pw-(e.tabw+e.thumbw)) / (e.gw[ix]);
+						newh =  (e.gh[ix] * m) + (e.tabh + e.thumbh);
+					}
+					var el = document.getElementById(e.c);
+					if (el!==null && el) el.style.height = newh+"px";
+					el = document.getElementById(e.c+"_wrapper");
+					if (el!==null && el) {
+						el.style.height = newh+"px";
+						el.style.display = "block";
+					}
+				} catch(e){
+					console.log("Failure at Presize of Slider:" + e)
+				}
+			//});
+		  };</script>
+<style>		
+		
+		</style><noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+<body data-rsssl=1 class="archive tax-product_cat term-fh12-6x4-420 term-6524 theme-woodmart woocommerce woocommerce-page woocommerce-no-js wrapper-full-width form-style-rounded form-border-width-2 categories-accordion-on woodmart-archive-shop notifications-sticky btns-default-rounded btns-default-dark btns-default-hover-dark btns-shop-rounded btns-shop-light btns-shop-hover-light btns-accent-rounded btns-accent-light btns-accent-hover-light wpb-js-composer js-comp-ver-6.10.0 vc_responsive">
+		
+	<div class="website-wrapper">
+
+		
+			<!-- HEADER -->
+			<header class="whb-header whb-sticky-shadow whb-scroll-slide whb-sticky-real">
+
+				<div class="whb-main-header">
+	
+<div class="whb-row whb-top-bar whb-sticky-row whb-with-bg whb-without-border whb-color-light whb-flex-flex-middle">
+	<div class="container">
+		<div class="whb-flex-row whb-top-bar-inner">
+			<div class="whb-column whb-col-left whb-visible-lg">
+	<div class="site-logo">
+	<div class="woodmart-logo-wrap">
+		<a href="https://importadorasubateria.com/" class="woodmart-logo woodmart-main-logo" rel="home">
+			<img src="https://importadorasubateria.com/wp-content/uploads/2023/03/Logo.webp" alt="Subateria" style="max-width: 150px;" />		</a>
+			</div>
+</div>
+</div>
+<div class="whb-column whb-col-center whb-visible-lg">
+	<div class="whb-navigation whb-secondary-menu site-navigation woodmart-navigation menu-right navigation-style-bordered" role="navigation">
+	<div class="menu-menu-principal-container"><ul id="menu-menu-principal" class="menu"><li id="menu-item-528" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-528 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/" class="woodmart-nav-link"><span class="nav-link-text">Inicio</span></a></li>
+<li id="menu-item-531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-531 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/shop/" class="woodmart-nav-link"><span class="nav-link-text">Productos</span></a></li>
+<li id="menu-item-530" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-530 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/quienes-somos/" class="woodmart-nav-link"><span class="nav-link-text">Quiénes somos</span></a></li>
+<li id="menu-item-529" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-529 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/locales/" class="woodmart-nav-link"><span class="nav-link-text">Locales</span></a></li>
+</ul></div></div><!--END MAIN-NAV-->
+</div>
+<div class="whb-column whb-col-right whb-visible-lg">
+	<div class="whb-html-block-element"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="wd-642c55f5b0557" class="woodmart-button-wrapper text-center"><a href="#ctc_chat" title="" class="btn btn-color-default btn-style-default btn-shape-round btn-size-default btn-whatsapp btn-icon-pos-left">+593 99 941 0529<span class="wd-btn-icon"><i class="fab fa-whatsapp"></i></span></a></div></div></div></div></div><style data-type="vc_shortcodes-custom-css"></style></div>
+<div class="whb-html-block-element"><p><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="wd-642b3f36ea380" class="woodmart-button-wrapper text-center"><a  class="btn btn-color-default btn-style-default btn-shape-round btn-size-default btn-whatsapp btn-icon-pos-left">07-2802111<span class="wd-btn-icon"><i class="vc-material vc-material-phone"></i></span></a></div></div></div></div></div></p>
+<style data-type="vc_shortcodes-custom-css"></style></div>
+<div class="woodmart-header-links woodmart-navigation menu-simple-dropdown wd-tools-element item-event-hover  my-account-with-icon login-side-opener"  title="My account">
+			<a href="https://importadorasubateria.com/my-account/">
+			<span class="wd-tools-icon">
+							</span>
+			<span class="wd-tools-text">
+				Login / Register			</span>
+		</a>
+		
+			</div>
+</div>
+<div class="whb-column whb-col-mobile whb-hidden-lg">
+	<div class="site-logo">
+	<div class="woodmart-logo-wrap">
+		<a href="https://importadorasubateria.com/" class="woodmart-logo woodmart-main-logo" rel="home">
+			<img src="https://importadorasubateria.com/wp-content/uploads/2023/03/Logo.webp" alt="Subateria" style="max-width: 150px;" />		</a>
+			</div>
+</div>
+<div class="woodmart-burger-icon wd-tools-element mobile-nav-icon whb-mobile-nav-icon wd-style-icon">
+	<a href="#">
+					<span class="woodmart-burger wd-tools-icon"></span>
+				<span class="woodmart-burger-label wd-tools-text">Menu</span>
+	</a>
+</div><!--END MOBILE-NAV-ICON--></div>
+		</div>
+	</div>
+</div>
+
+<div class="whb-row whb-general-header whb-not-sticky-row whb-with-bg whb-border-fullwidth whb-color-dark whb-flex-flex-middle">
+	<div class="container">
+		<div class="whb-flex-row whb-general-header-inner">
+			<div class="whb-column whb-col-left whb-visible-lg">
+	
+<div class="header-categories-nav show-on-hover whb-sgr1yje9zv1f5f68n9ng" role="navigation">
+	<div class="header-categories-nav-wrap">
+		<span class="menu-opener color-scheme-light has-bg">
+							<span class="woodmart-burger"></span>
+			
+			<span class="menu-open-label">
+				Todos los productos			</span>
+			<span class="arrow-opener"></span>
+		</span>
+		<div class="categories-menu-dropdown vertical-navigation woodmart-navigation">
+			<div class="menu-categories-container"><ul id="menu-categories" class="menu wd-cat-nav"><li id="menu-item-1275" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1275 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/autos-2/" class="woodmart-nav-link"><span class="nav-link-text">Autos</span></a></li>
+<li id="menu-item-1276" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1276 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/busetas/" class="woodmart-nav-link"><span class="nav-link-text">Busetas</span></a></li>
+<li id="menu-item-1277" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-product_cat-ancestor menu-item-1277 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/camiones/" class="woodmart-nav-link"><span class="nav-link-text">Camiones</span></a></li>
+<li id="menu-item-1278" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1278 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/camionetas/" class="woodmart-nav-link"><span class="nav-link-text">Camionetas</span></a></li>
+<li id="menu-item-1280" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1280 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/mini-van/" class="woodmart-nav-link"><span class="nav-link-text">Mini Van</span></a></li>
+<li id="menu-item-1274" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1274 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/suvs/" class="woodmart-nav-link"><span class="nav-link-text">SUVs</span></a></li>
+<li id="menu-item-1279" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1279 item-level-0 menu-item-design-default menu-simple-dropdown item-event-hover"><a href="https://importadorasubateria.com/product-category/taxis/" class="woodmart-nav-link"><span class="nav-link-text">Taxis</span></a></li>
+</ul></div>		</div>
+	</div>
+</div>
+</div>
+<div class="whb-column whb-col-center whb-visible-lg">
+				<div class="woodmart-search-form">
+								<form role="search" method="get" class="searchform  search-style-with-bg woodmart-ajax-search" action="https://importadorasubateria.com/"  data-thumbnail="1" data-price="1" data-post_type="product" data-count="20" data-sku="0" data-symbols_count="3">
+					<input type="text" class="s" placeholder="¿Qué Estás Buscando?" value="" name="s" />
+					<input type="hidden" name="post_type" value="product">
+										<button type="submit" class="searchsubmit">
+						Search											</button>
+				</form>
+													<div class="search-results-wrapper"><div class="woodmart-scroll"><div class="woodmart-search-results woodmart-scroll-content"></div></div><div class="woodmart-search-loader wd-fill"></div></div>
+							</div>
+		</div>
+<div class="whb-column whb-col-right whb-visible-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-mobile-left whb-hidden-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-mobile-center whb-hidden-lg">
+	
+<div class="whb-text-element reset-mb-10 "><h3 class="tit-mob">Productos</h3>
+<div class="breadcrumb-title"><span><span><a href="https://importadorasubateria.com/">Inicio</a></span>  <span><a href="https://importadorasubateria.com/shop/">Productos</a></span>  <span><a href="https://importadorasubateria.com/product-category/camiones/">Camiones</a></span>  <span><a href="https://importadorasubateria.com/product-category/camiones/volvo-camiones/">Volvo</a></span>  <span class="breadcrumb_last" aria-current="page"><strong>FH12 6X4 420</strong></span></span></div></div>
+</div>
+<div class="whb-column whb-mobile-right whb-hidden-lg whb-empty-column">
+	</div>
+		</div>
+	</div>
+</div>
+
+<div class="whb-row whb-header-bottom whb-not-sticky-row whb-with-bg whb-border-fullwidth whb-color-dark whb-flex-flex-middle">
+	<div class="container">
+		<div class="whb-flex-row whb-header-bottom-inner">
+			<div class="whb-column whb-col-left whb-visible-lg">
+	
+<div class="whb-text-element reset-mb-10 "><span><span><a href="https://importadorasubateria.com/">Inicio</a></span>  <span><a href="https://importadorasubateria.com/shop/">Productos</a></span>  <span><a href="https://importadorasubateria.com/product-category/camiones/">Camiones</a></span>  <span><a href="https://importadorasubateria.com/product-category/camiones/volvo-camiones/">Volvo</a></span>  <span class="breadcrumb_last" aria-current="page"><strong>FH12 6X4 420</strong></span></span></div>
+</div>
+<div class="whb-column whb-col-center whb-visible-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-col-right whb-visible-lg whb-empty-column">
+	</div>
+<div class="whb-column whb-col-mobile whb-hidden-lg">
+				<div class="woodmart-search-form">
+								<form role="search" method="get" class="searchform  search-style-with-bg woodmart-ajax-search woodmart-mobile-search-form" action="https://importadorasubateria.com/"  data-thumbnail="1" data-price="1" data-post_type="product" data-count="20" data-sku="0" data-symbols_count="3">
+					<input type="text" class="s" placeholder="¿Qué Estás Buscando?" value="" name="s" />
+					<input type="hidden" name="post_type" value="product">
+										<button type="submit" class="searchsubmit">
+						Search											</button>
+				</form>
+													<div class="search-results-wrapper"><div class="woodmart-scroll"><div class="woodmart-search-results woodmart-scroll-content"></div></div><div class="woodmart-search-loader wd-fill"></div></div>
+							</div>
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+
+			</header><!--END MAIN HEADER-->
+			
+								<div class="main-page-wrapper">
+		
+		
+		<!-- MAIN CONTENT AREA -->
+				<div class="container">
+			<div class="row content-layout-wrapper align-items-start">
+		
+		
+<aside class="sidebar-container col-lg-3 col-md-3 col-12 order-last order-md-first sidebar-left area-sidebar-shop" role="complementary">
+	<div class="widget-heading">
+		<a href="#" class="close-side-widget wd-cross-button wd-with-text-left">Cerrar</a>
+	</div>
+	<div class="sidebar-inner woodmart-sidebar-scroll">
+		<div class="widget-area woodmart-sidebar-content">
+						<div id="block-37" class="woodmart-widget widget sidebar-widget widget_block"><p>    <div id="container-filter-dropdown">
+        <div id="loading-overlay">
+            <div id="loading-spinner"></div>
+        </div>
+        <div class="dropdown" id="type-drop">
+            <select id="select-type" style="width: 100%">
+                <option value=''></option>
+                            </select>
+        </div>
+        <div class="dropdown" id="brand-drop">
+            <select id="select-brand" style="width: 100%">
+                <option value=''></option>
+            </select>
+        </div>
+        <div class="dropdown" id="model-drop">
+            <select id="select-model" style="width: 100%">
+                <option value=''></option>
+            </select>
+        </div>
+        <div class="dropdown" id="year-drop">
+            <select id="select-year" style="width: 100%">
+                <option value=''></option>
+            </select>
+        </div>
+        <div class="action-buttons home">
+
+            <button type="button" id="clean_dropdown">
+                Limpiar
+            </button>
+            <input type="button" id="search_dropdown" value="Buscar">
+        </div>
+    </div>
+</p>
+</div>					</div><!-- .widget-area -->
+	</div><!-- .sidebar-inner -->
+</aside><!-- .sidebar-container -->
+
+<div class="site-content shop-content-area col-lg-9 col-12 col-md-9 description-area-before content-without-products" role="main">
+<div class="woocommerce-notices-wrapper"></div>
+<div class="shop-loop-head">
+
+	<div class="woodmart-woo-breadcrumbs">
+							
+			</div>
+	
+</div>
+
+
+<div class="woodmart-active-filters">
+	</div>
+
+<div class="woodmart-shop-loader"></div>
+
+			
+			<div class="bapf_no_products"><p class="woocommerce-info">No se han encontrado productos que coincidan con tu selección.</p>
+
+<div class="no-products-footer">
+				<div class="woodmart-search-form">
+								<form role="search" method="get" class="searchform  woodmart-ajax-search" action="https://importadorasubateria.com/"  data-thumbnail="1" data-price="1" data-post_type="product" data-count="20" data-sku="0" data-symbols_count="3">
+					<input type="text" class="s" placeholder="¿Qué Estás Buscando?" value="" name="s" />
+					<input type="hidden" name="post_type" value="product">
+										<button type="submit" class="searchsubmit">
+						Search											</button>
+				</form>
+													<div class="search-results-wrapper"><div class="woodmart-scroll"><div class="woodmart-search-results woodmart-scroll-content"></div></div><div class="woodmart-search-loader wd-fill"></div></div>
+							</div>
+		</div>
+
+</div>
+		
+
+</div>
+			</div><!-- .main-page-wrapper --> 
+			</div> <!-- end row -->
+	</div> <!-- end container -->
+				<div class="woodmart-prefooter">
+			<div class="container">
+				<div data-vc-full-width="true" data-vc-full-width-init="false" class="vc_row wpb_row vc_row-fluid main-container-footer vc_custom_1681138460359 vc_row-has-fill"><div class="wpb_column container-pre-footer vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div  class="wpb_single_image wpb_content_element vc_align_left">
+		
+		<figure class="wpb_wrapper vc_figure">
+			<div class="vc_single_image-wrapper   vc_box_border_grey"><img width="300" height="54" src="https://importadorasubateria.com/wp-content/uploads/2023/03/Logo-300x54.webp" class="vc_single_image-img attachment-medium" alt="" title="Logo" decoding="async" loading="lazy" srcset="https://importadorasubateria.com/wp-content/uploads/2023/03/Logo-300x54.webp 300w, https://importadorasubateria.com/wp-content/uploads/2023/03/Logo-600x109.webp 600w, https://importadorasubateria.com/wp-content/uploads/2023/03/Logo-768x139.webp 768w, https://importadorasubateria.com/wp-content/uploads/2023/03/Logo.webp 801w" sizes="(max-width: 300px) 100vw, 300px" /></div>
+		</figure>
+	</div>
+</div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><style data-type="vc_shortcodes-custom-css">.vc_custom_1681138460359{margin-bottom: -40px !important;padding-bottom: 0px !important;background-color: #dd1725 !important;}</style>			</div>
+		</div>
+		
+	<!-- FOOTER -->
+	<footer class="footer-container color-scheme-light">
+
+			<div class="container main-footer">
+		<aside class="footer-sidebar widget-area row" role="complementary">
+									<div class="footer-column footer-column-1 col-12 col-sm-6 col-lg-3">
+							<div id="block-25" class="woodmart-widget widget footer-widget  widget_block"><div class="text-footer-1" >
+<p><span>Importadora Su Batería 20 años a tu servicio. Visita nuestros locales en Cuenca, Loja, Machala, Macas y Yantzaza.</span>
+<br><br>
+<span>Contamos con servicio a domicilio sin costo adicional.</span></p>
+</div></div>						</div>
+																	<div class="footer-column footer-column-2 col-12 col-sm-6 col-lg-3">
+							<div id="nav_menu-3" class="woodmart-widget widget footer-widget  widget_nav_menu"><div class="menu-menu-principal-container"><ul id="menu-menu-principal-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-528"><a href="https://importadorasubateria.com/">Inicio</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-531"><a href="https://importadorasubateria.com/shop/">Productos</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-530"><a href="https://importadorasubateria.com/quienes-somos/">Quiénes somos</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-529"><a href="https://importadorasubateria.com/locales/">Locales</a></li>
+</ul></div></div>						</div>
+																	<div class="footer-column footer-column-3 col-12 col-sm-6 col-lg-3">
+							<div id="nav_menu-5" class="woodmart-widget widget footer-widget  widget_nav_menu"><div class="menu-menu-3-faq-ter-container"><ul id="menu-menu-3-faq-ter" class="menu"><li id="menu-item-696" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-696"><a href="https://importadorasubateria.com/preguntas-frecuentes/">Preguntas frecuentes</a></li>
+<li id="menu-item-1531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531"><a href="https://importadorasubateria.com/terminos-y-condiciones/">Términos y condiciones</a></li>
+<li id="menu-item-1532" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-1532"><a rel="privacy-policy" href="https://importadorasubateria.com/politica-privacidad/">Política de privacidad</a></li>
+</ul></div></div>						</div>
+																	<div class="footer-column footer-column-4 col-12 col-sm-6 col-lg-3">
+							<div id="block-31" class="woodmart-widget widget footer-widget  widget_block"><ul class="social">
+<li>
+<a target="_blank" href="https://www.facebook.com/subateriaexpress" title="">
+<span class="icon fa fa-facebook"></span>
+</a>
+</li>
+<li>
+<a target="_blank" href="https://www.instagram.com/subateria/" title="">
+<span class="icon fa fa-instagram"></span>
+</a>
+</li>
+<li>
+<a 
+target="_blank" href="https://www.youtube.com/@importadorasubateria8234/" title="">
+<span class="icon fa fa-youtube"></span>
+</a>
+</li>
+</ul></div>						</div>
+													</aside><!-- .footer-sidebar -->
+	</div>
+	
+		<div class="copyrights-wrapper copyrights-centered">
+				<div class="container">
+					<div class="min-footer">
+						<div class="col-left reset-mb-10">
+															<div class="copyright_text">Importadora Subateria.  Desarrollado por <a href="https://mycodedmind.com/" target="_Blank">MCM</a>. Copyright © 2024 </div>													</div>
+											</div>
+				</div>
+			</div>
+	
+
+	</footer>
+</div> <!-- end wrapper -->
+<div class="woodmart-close-side"></div>
+
+		<script>
+			window.RS_MODULES = window.RS_MODULES || {};
+			window.RS_MODULES.modules = window.RS_MODULES.modules || {};
+			window.RS_MODULES.waiting = window.RS_MODULES.waiting || [];
+			window.RS_MODULES.defered = true;
+			window.RS_MODULES.moduleWaiting = window.RS_MODULES.moduleWaiting || {};
+			window.RS_MODULES.type = 'compiled';
+		</script>
+		<!-- Click to Chat - https://holithemes.com/plugins/click-to-chat/  v3.31.1 -->  
+            <div class="ht-ctc ht-ctc-chat ctc-analytics ctc_wp_desktop style-7  " id="ht-ctc-chat"  
+                style="display: none;  position: fixed; bottom: 100px; right: 15px;"   >
+                                <div class="ht_ctc_style ht_ctc_chat_style">
+                <style id="ht-ctc-s7">
+.ht-ctc .ctc_s_7:hover .ctc_s_7_icon_padding, .ht-ctc .ctc_s_7:hover .ctc_cta_stick{background-color:#25d366 !important;}.ht-ctc .ctc_s_7:hover svg g path{fill:#f4f4f4 !important;}</style>
+
+<div title = 'WhatsApp us' class="ctc_s_7 ctc-analytics ctc_nb" style="display:flex;justify-content:center;align-items:center; " data-nb_top="-7.8px" data-nb_right="-7.8px">
+    <p class="ctc_s_7_cta ctc_cta ctc_cta_stick ctc-analytics ht-ctc-cta " style="padding: 0px 16px;  color: #ffffff; background-color: #25d366; border-radius:10px; margin:0 10px;  display: none; ">WhatsApp us</p>
+    <div class="ctc_s_7_icon_padding ctc-analytics " style="font-size: 20px; color: #ffffff; padding: 12px; background-color: #25D366; border-radius: 50%;">
+        <svg style="pointer-events:none; display:block; height:20px; width:20px;" height="20px" version="1.1" viewBox="0 0 509 512" width="20px">
+        <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+            <path style="fill: #ffffff;" d="M259.253137,0.00180389396 C121.502859,0.00180389396 9.83730687,111.662896 9.83730687,249.413175 C9.83730687,296.530232 22.9142299,340.597122 45.6254897,378.191325 L0.613226597,512.001804 L138.700183,467.787757 C174.430395,487.549184 215.522926,498.811168 259.253137,498.811168 C396.994498,498.811168 508.660049,387.154535 508.660049,249.415405 C508.662279,111.662896 396.996727,0.00180389396 259.253137,0.00180389396 L259.253137,0.00180389396 Z M259.253137,459.089875 C216.65782,459.089875 176.998957,446.313956 143.886359,424.41206 L63.3044195,450.21808 L89.4939401,372.345171 C64.3924908,337.776609 49.5608297,295.299463 49.5608297,249.406486 C49.5608297,133.783298 143.627719,39.7186378 259.253137,39.7186378 C374.871867,39.7186378 468.940986,133.783298 468.940986,249.406486 C468.940986,365.025215 374.874096,459.089875 259.253137,459.089875 Z M200.755924,146.247066 C196.715791,136.510165 193.62103,136.180176 187.380228,135.883632 C185.239759,135.781068 182.918689,135.682963 180.379113,135.682963 C172.338979,135.682963 164.002301,138.050856 158.97889,143.19021 C152.865178,149.44439 137.578667,164.09322 137.578667,194.171258 C137.578667,224.253755 159.487251,253.321759 162.539648,257.402027 C165.600963,261.477835 205.268745,324.111057 266.985579,349.682963 C315.157262,369.636141 329.460495,367.859106 340.450462,365.455539 C356.441543,361.9639 376.521811,350.186865 381.616571,335.917077 C386.711331,321.63837 386.711331,309.399797 385.184018,306.857991 C383.654475,304.305037 379.578667,302.782183 373.464955,299.716408 C367.351242,296.659552 337.288812,281.870254 331.68569,279.83458 C326.080339,277.796676 320.898622,278.418749 316.5887,284.378615 C310.639982,292.612729 304.918689,301.074268 300.180674,306.09099 C296.46161,310.02856 290.477218,310.577055 285.331175,308.389764 C278.564174,305.506821 259.516237,298.869139 236.160607,278.048627 C217.988923,261.847958 205.716906,241.83458 202.149458,235.711949 C198.582011,229.598236 201.835077,225.948292 204.584241,222.621648 C207.719135,218.824546 210.610997,216.097679 213.667853,212.532462 C216.724709,208.960555 218.432625,207.05866 220.470529,202.973933 C222.508433,198.898125 221.137195,194.690767 219.607652,191.629452 C218.07588,188.568136 205.835077,158.494558 200.755924,146.247066 Z" 
+            fill="#ffffff" id="htwaicon-chat"/>
+        </g>
+        </svg>    </div>
+</div>                </div>
+            </div>
+                        <span class="ht_ctc_chat_data" 
+                data-no_number=""
+                data-settings="{&quot;number&quot;:&quot;593999410529&quot;,&quot;pre_filled&quot;:&quot;&quot;,&quot;dis_m&quot;:&quot;show&quot;,&quot;dis_d&quot;:&quot;show&quot;,&quot;css&quot;:&quot;display: none; cursor: pointer; z-index: 99999999;&quot;,&quot;pos_d&quot;:&quot;position: fixed; bottom: 100px; right: 15px;&quot;,&quot;pos_m&quot;:&quot;position: fixed; bottom: 100px; right: 15px;&quot;,&quot;schedule&quot;:&quot;no&quot;,&quot;se&quot;:150,&quot;ani&quot;:&quot;no-animations&quot;,&quot;url_target_d&quot;:&quot;_blank&quot;,&quot;ga&quot;:&quot;yes&quot;,&quot;fb&quot;:&quot;yes&quot;,&quot;g_an_event_name&quot;:&quot;chat: {number}&quot;,&quot;pixel_event_name&quot;:&quot;Click to Chat by HoliThemes&quot;}" 
+            ></span>
+            	<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<link rel='stylesheet' id='vc_font_awesome_5_shims-css' href='https://importadorasubateria.com/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/v4-shims.min.css?ver=6.10.0' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vc_font_awesome_5-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/all.min.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vc_material-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/js_composer/assets/css/lib/vc-material/vc_material.min.css?ver=1714084021' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='rs-plugin-settings-css' href='https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/revslider/public/assets/css/rs6.css?ver=1714084021' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<script type="text/javascript" id="ht_ctc_app_js-js-extra">
+/* <![CDATA[ */
+var ht_ctc_chat_var = {"number":"593999410529","pre_filled":"","dis_m":"show","dis_d":"show","css":"display: none; cursor: pointer; z-index: 99999999;","pos_d":"position: fixed; bottom: 100px; right: 15px;","pos_m":"position: fixed; bottom: 100px; right: 15px;","schedule":"no","se":"150","ani":"no-animations","url_target_d":"_blank","ga":"yes","fb":"yes","g_an_event_name":"chat: {number}","pixel_event_name":"Click to Chat by HoliThemes"};
+var ht_ctc_variables = {"g_an_event_name":"chat: {number}","pixel_event_type":"trackCustom","pixel_event_name":"Click to Chat by HoliThemes","g_an_params":["g_an_param_1","g_an_param_2","g_an_param_3"],"g_an_param_1":{"key":"number","value":"{number}"},"g_an_param_2":{"key":"title","value":"{title}"},"g_an_param_3":{"key":"url","value":"{url}"},"pixel_params":["pixel_param_1","pixel_param_2","pixel_param_3","pixel_param_4"],"pixel_param_1":{"key":"Category","value":"Click to Chat for WhatsApp"},"pixel_param_2":{"key":"ID","value":"{number}"},"pixel_param_3":{"key":"Title","value":"{title}"},"pixel_param_4":{"key":"URL","value":"{url}"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/click-to-chat-for-whatsapp/new/inc/assets/js/app.js?ver=1714084021" id="ht_ctc_app_js-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1714084021" id="swv-js" defer></script>
+<script type="text/javascript" id="contact-form-7-js-extra">
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/importadorasubateria.com\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1714084021" id="contact-form-7-js" defer></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/plugins/revslider/public/assets/js/rbtools.min.js?ver=6.6.11" defer async id="tp-tools-js"></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/plugins/revslider/public/assets/js/rs6.min.js?ver=6.6.11" defer async id="revmin-js"></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/cache/min/1/wp-content/themes/woodmart-child/slick.js?ver=1714084021" id="slick-js-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=6.10.0" id="wpb_composer_front_js-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-includes/js/imagesloaded.min.js?ver=5.0.0" id="imagesloaded-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/themes/woodmart/js/owl.carousel.min.js?ver=4.6.0" id="woodmart-owl-carousel-js" defer></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/themes/woodmart/js/jquery.tooltips.min.js?ver=4.6.0" id="woodmart-tooltips-js" defer></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/themes/woodmart/js/jquery.magnific-popup.min.js?ver=4.6.0" id="woodmart-magnific-popup-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/themes/woodmart/js/device.min.js?ver=4.6.0" id="woodmart-device-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/themes/woodmart/js/waypoints.min.js?ver=4.6.0" id="woodmart-waypoints-js" defer></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/themes/woodmart/js/jquery.nanoscroller.min.js?ver=4.6.0" id="woodmart-nanoscroller-js" defer></script>
+<script type="text/javascript" id="woodmart-theme-js-extra">
+/* <![CDATA[ */
+var woodmart_settings = {"adding_to_cart":"Processing","added_to_cart":"Product was successfully added to your cart.","continue_shopping":"Continue shopping","view_cart":"View Cart","go_to_checkout":"Datos de env\u00edo","loading":"Loading...","countdown_days":"days","countdown_hours":"hr","countdown_mins":"min","countdown_sec":"sc","cart_url":"https:\/\/importadorasubateria.com\/cart\/","ajaxurl":"https:\/\/importadorasubateria.com\/wp-admin\/admin-ajax.php","add_to_cart_action":"widget","added_popup":"no","categories_toggle":"yes","enable_popup":"no","popup_delay":"2000","popup_event":"time","popup_scroll":"1000","popup_pages":"0","promo_popup_hide_mobile":"yes","product_images_captions":"no","ajax_add_to_cart":"1","all_results":"View all results","product_gallery":{"images_slider":true,"thumbs_slider":{"enabled":false,"position":"without","items":{"desktop":4,"tablet_landscape":3,"tablet":4,"mobile":3,"vertical_items":3}}},"zoom_enable":"yes","ajax_scroll":"yes","ajax_scroll_class":".main-page-wrapper","ajax_scroll_offset":"100","infinit_scroll_offset":"300","product_slider_auto_height":"no","price_filter_action":"click","product_slider_autoplay":"","close":"Close (Esc)","share_fb":"Share on Facebook","pin_it":"Pin it","tweet":"Tweet","download_image":"Download image","cookies_version":"1","header_banner_version":"1","promo_version":"1","header_banner_close_btn":"1","header_banner_enabled":"","whb_header_clone":"\n    <div class=\"whb-sticky-header whb-clone whb-main-header <%wrapperClasses%>\">\n        <div class=\"<%cloneClass%>\">\n            <div class=\"container\">\n                <div class=\"whb-flex-row whb-general-header-inner\">\n                    <div class=\"whb-column whb-col-left whb-visible-lg\">\n                        <%.site-logo%>\n                    <\/div>\n                    <div class=\"whb-column whb-col-center whb-visible-lg\">\n                        <%.main-nav%>\n                    <\/div>\n                    <div class=\"whb-column whb-col-right whb-visible-lg\">\n                        <%.woodmart-header-links%>\n                        <%.search-button:not(.mobile-search-icon)%>\n\t\t\t\t\t\t<%.woodmart-wishlist-info-widget%>\n                        <%.woodmart-compare-info-widget%>\n                        <%.woodmart-shopping-cart%>\n                        <%.full-screen-burger-icon%>\n                    <\/div>\n                    <%.whb-mobile-left%>\n                    <%.whb-mobile-center%>\n                    <%.whb-mobile-right%>\n                <\/div>\n            <\/div>\n        <\/div>\n    <\/div>\n","pjax_timeout":"5000","split_nav_fix":"","shop_filters_close":"no","woo_installed":"1","base_hover_mobile_click":"no","centered_gallery_start":"1","quickview_in_popup_fix":"","disable_nanoscroller":"enable","one_page_menu_offset":"150","hover_width_small":"1","is_multisite":"","current_blog_id":"1","swatches_scroll_top_desktop":"","swatches_scroll_top_mobile":"","lazy_loading_offset":"0","add_to_cart_action_timeout":"no","add_to_cart_action_timeout_number":"3","single_product_variations_price":"no","google_map_style_text":"Custom style","quick_shop":"yes","sticky_product_details_offset":"150","preloader_delay":"300","comment_images_upload_size_text":"Some files are too large. Allowed file size is 1 MB.","comment_images_count_text":"You can upload up to 3 images to your review.","comment_images_upload_mimes_text":"You are allowed to upload images only in png, jpeg formats.","comment_images_added_count_text":"Added %s image(s)","comment_images_upload_size":"1048576","comment_images_count":"3","comment_images_upload_mimes":{"jpg|jpeg|jpe":"image\/jpeg","png":"image\/png"},"home_url":"https:\/\/importadorasubateria.com\/","shop_url":"https:\/\/importadorasubateria.com\/shop\/","age_verify":"no","age_verify_expires":"30"};
+var woodmart_variation_gallery_data = null;
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://importadorasubateria.com/wp-content/themes/woodmart/js/functions.min.js?ver=4.6.0" id="woodmart-theme-js" defer></script>
+<script type="text/javascript" src="https://importadorasubateria.com/wp-content/themes/woodmart/js/jquery.autocomplete.min.js?ver=4.6.0" id="woodmart-autocomplete-js" defer></script>
+<div class="mobile-nav slide-from-left"><div class="mobile-menu-tab mobile-pages-menu active"><div class="menu-menu-principal-container"><ul id="menu-menu-principal-2" class="site-mobile-menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-528 item-level-0"><a href="https://importadorasubateria.com/" class="woodmart-nav-link"><span class="nav-link-text">Inicio</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-531 item-level-0"><a href="https://importadorasubateria.com/shop/" class="woodmart-nav-link"><span class="nav-link-text">Productos</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-530 item-level-0"><a href="https://importadorasubateria.com/quienes-somos/" class="woodmart-nav-link"><span class="nav-link-text">Quiénes somos</span></a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-529 item-level-0"><a href="https://importadorasubateria.com/locales/" class="woodmart-nav-link"><span class="nav-link-text">Locales</span></a></li>
+<li class="menu-item item-level-0  my-account-with-text login-side-opener menu-item-register"><a href="https://importadorasubateria.com/my-account/">Login / Register</a></li></ul></div></div>
+		</div><!--END MOBILE-NAV-->			<div class="login-form-side">
+				<div class="widget-heading">
+					<h3 class="widget-title">Ingresar</h3>
+					<a href="#" class="close-side-widget wd-cross-button wd-with-text-left">Cerrar</a>
+				</div>
+				
+							<form method="post" class="login woocommerce-form woocommerce-form-login " action="https://importadorasubateria.com/my-account/" >
+
+				
+				
+				<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide form-row-username">
+					<label for="username">Nombre de usuario o correo electrónico&nbsp;<span class="required">*</span></label>
+					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="" />
+				</p>
+				<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide form-row-password">
+					<label for="password">Contraseña&nbsp;<span class="required">*</span></label>
+					<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" />
+				</p>
+
+				
+				<p class="form-row">
+					<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="9318a7bd49" /><input type="hidden" name="_wp_http_referer" value="/product-category/camiones/volvo-camiones/fh12-6x4-420/" />										<button type="submit" class="button woocommerce-button woocommerce-form-login__submit" name="login" value="Iniciar sesión">Iniciar sesión</button>
+				</p>
+
+				<div class="login-form-footer">
+					<a href="https://importadorasubateria.com/my-account/lost-password/" class="woocommerce-LostPassword lost_password">¿Olvidaste tu contraseña?</a>
+					<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+						<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" value="forever" /> <span>Recuerdame</span>
+					</label>
+				</div>
+				
+				
+				
+			</form>
+
+						
+				<div class="create-account-question">
+					<span class="create-account-text">¿No tienes cuenta aún?</span>
+					<a href="https://importadorasubateria.com/my-account/?action=register" class="btn btn-style-link btn-color-primary create-account-button">Crea una cuenta</a>
+				</div>
+			</div>
+		
+		
+					<a href="#" class="scrollToTop">Scroll To Top</a>
+		<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Cerrar (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Compartir"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Cambiar a pantalla completa"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Ampliar/Reducir"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Anterior (flecha izquierda)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Siguiente (flecha derecha)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1720614834 -->

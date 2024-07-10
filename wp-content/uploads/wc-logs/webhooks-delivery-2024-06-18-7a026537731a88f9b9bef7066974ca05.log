@@ -1,0 +1,53 @@
+2024-06-18T15:21:34+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => e85599c3b6ff0a6da3a5108f249669f7
+            [Date] => 18 Jun, 2024 @ 15:21
+            [URL] => https://api.botsip.com/orders/wp-new-order/65eb7599e82c4a57c564da8c
+            [Duration] => 1.63773
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/8.4.0 Hookshot (WordPress/6.5.4)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://importadorasubateria.com/
+                            [X-WC-Webhook-Topic] => order.created
+                            [X-WC-Webhook-Resource] => order
+                            [X-WC-Webhook-Event] => created
+                            [X-WC-Webhook-Signature] => +5LX1lOexJgkUe8nYQKBB7+UKy7ZlHazbPzDGQh+Yhg=
+                            [X-WC-Webhook-ID] => 3
+                            [X-WC-Webhook-Delivery-ID] => e85599c3b6ff0a6da3a5108f249669f7
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 502
+                    [Message] => Bad Gateway
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [server] => nginx
+                                    [date] => Tue, 18 Jun 2024 15:21:34 GMT
+                                    [content-type] => application/json; charset=utf-8
+                                    [content-length] => 73
+                                    [x-powered-by] => Express
+                                    [access-control-allow-origin] => *
+                                    [etag] => W/"49-bryB7tBPVSf9K0MlwuTaxuX3Zec"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+

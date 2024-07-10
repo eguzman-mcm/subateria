@@ -1,0 +1,5 @@
+
+; BEGIN CUSTOM PHP SETTINGS
+upload_max_filesize=10M
+memory_limit=4024M
+; END CUSTOM PHP SETTINGS

@@ -1,0 +1,401 @@
+jQuery(document).ready(function ($) {
+
+	$('.carousel').slick({
+		dots: true,
+		arrows: false,
+		infinite: true,
+		speed: 500,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1,
+					dots: true
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					dots: true
+				}
+			}
+		]
+	});
+
+
+
+	// Obtén el checkbox y el botón por su ID
+	var checkbox = $('#cbx');
+	var alert = $('.alert-rec');
+
+	// Asigna un evento de cambio al checkbox
+	checkbox.change(function () {
+		// Verifica si el checkbox está marcado
+		if ($(this).is(':checked')) {
+			alert.html('<p> Importante, la cantidad de baterías que deseas comprar deben ser exactamente la misma que vas a reciclar. <br> <strong>Reciclaje de Baterías únicamente disponible en las ciudades de: Cuenca, Loja, Machala, Macas, Yantzaza, Cañar, Catamayo</strong></p>');
+		} else {
+			alert.html('');
+		}
+	});
+
+
+	//  !------------------------------------------------------------------------------------------
+	var act = true
+	var category_tree = []
+	$("#loading-overlay").show();
+	jQuery.ajax({
+		type: "post",
+		url: MCM.ajax_url,
+		data: {
+			action: 'get_all',
+			nonce: MCM.nonce
+		},
+		success: function (result) {
+			console.log(result);
+			category_tree = result;
+			$('#select-type').html(template_dropdown(category_tree));
+			$('#type').html(template(category_tree, 'vehicle_type'));
+			$('input[name=vehicle_type]').click(type);
+			var query = window.location.pathname;
+			if (query.indexOf('/product-category/') !== -1) {
+				query = query.replace('/product-category/', "");
+				query = query.slice(0, -1);
+				categories = query.split('/');
+				type();
+			} else {
+				categories = false;
+			}
+			$("#loading-overlay").hide();
+		}
+	});
+
+
+
+	function template(cat_data, name) {
+		html = "";
+		if (cat_data) {
+			html += '<ul class="wc-block-product-categories-list wc-block-product-categories-list--depth-0">';
+			for (var element of cat_data) {
+				html += '<li class="wc-block-product-categories-list-item">';
+				html += '<label class="radio-label" for="' + element.term_id + '">' + '<input class="radio-btn" id="' + element.term_id + '" type="radio" name="' + name + '" value="' + element.slug + '"/><span>' + element.name + '</span></label>';
+				html += '</li>';
+			}
+
+			html += '</ul>';
+			html += '</div>';
+		} else {
+			html += "<label>No existe elementos para esta categoría </label>";
+		}
+		return html;
+	}
+
+	var children = {
+		type: [],
+		brand: [],
+		model: [],
+		year: []
+	}
+
+
+	function type() {
+		try {
+			data_type_vehicle = $(this).val();
+			data_brand = "";
+			data_model = "";
+			data_year = "";
+		} catch (error) {
+			data_type_vehicle = categories[0] ? categories[0] : false;
+		}
+		var sub_cat = category_tree.filter(function (element) {
+			return element.slug == data_type_vehicle;
+		})
+		$('#model').html("");
+		$('#year').html("");
+		if (sub_cat.length > 0) {
+			children.brand = sub_cat[0].children ? sub_cat[0].children : [];
+			$('#brand').html(template(children.brand, 'brands'));
+			$('input[name=brands]').click(brands);
+			if (categories && act) {
+				$('input#' + sub_cat[0].term_id).attr('checked', true);
+				brands();
+			}
+		} else {
+			act = false;
+		}
+
+
+	}
+
+	function brands() {
+		try {
+			data_brand = $(this).val();
+			data_model = "";
+			data_year = "";
+		} catch (error) {
+			data_brand = categories[1] ? categories[1] : false;
+		}
+		var sub_cat = children.brand.filter(function (element) {
+			return element.slug == data_brand;
+		})
+
+		$('#year').html("");
+		if (sub_cat.length > 0) {
+			children.model = sub_cat[0].children ? sub_cat[0].children : [];
+			$('#model').html(template(children.model, 'models'));
+			$('input[name=models]').click(model);
+			if (categories && act) {
+				$('input#' + sub_cat[0].term_id).attr('checked', true);
+				model()
+			}
+		} else {
+			act = false;
+		}
+	}
+
+	function model() {
+		try {
+			data_model = $(this).val();
+			data_year = "";
+		} catch (error) {
+			data_model = categories[2] ? categories[2] : false;
+		}
+		var sub_cat = children.model.filter(function (element) {
+			return element.slug == data_model;
+		})
+		if (sub_cat.length > 0) {
+			children.year = sub_cat[0].children ? sub_cat[0].children : [];
+			$('#year').html(template(children.year, 'years'));
+			$('input[name=years]').click(year);
+			if (categories && act) {
+				$('input#' + sub_cat[0].term_id).attr('checked', true);
+				year()
+			}
+		} else {
+			act = false;
+		}
+
+	}
+
+	function year() {
+		try {
+			data_year = $(this).val();
+		} catch (error) {
+			data_year = categories[3] ? categories[3] : false;
+		}
+		var sub_cat = children.year.filter(function (element) {
+			return element.slug == data_year;
+		});
+		if (sub_cat.length > 0) {
+			if (categories && act) {
+				$('input#' + sub_cat[0].term_id).attr('checked', true);
+				act = false;
+			}
+		} else {
+			act = false;
+		}
+	}
+	// 	!------------------------------------------------------------------------------------------
+	// Global Variables
+
+	var data_type_vehicle = "";
+	var data_brand = "";
+	var data_model = "";
+	var data_year = "";
+
+	$(document).ajaxStart(function () {
+		$('#loading-overlay').fadeIn();
+	});
+
+	$(document).ajaxComplete(function () {
+		$('#loading-overlay').fadeOut();
+	});
+
+	$("#button_search").click(function () {
+		let redirect = false;
+		if (data_type_vehicle != "") {
+			data_type_vehicle += '/';
+			redirect = true;
+		}
+		if (data_brand != "") {
+			data_brand += '/';
+			redirect = true;
+		}
+		if (data_model != "") {
+			data_model += '/';
+			redirect = true;
+		}
+		if (data_year != "") {
+			data_year += '/';
+			redirect = true;
+		}
+		let link = redirect ? 'https://importadorasubateria.com/product-category/' + data_type_vehicle + data_brand + data_model + data_year : 'https://importadorasubateria.com/shop/';
+		console.log(link);
+		window.location.href = link;
+
+	})
+	// 	! -----------------------------------------------------------------------------------------
+
+	// Limpiar filtros 
+
+	$("#clean_dropdown").click(function () {
+
+		console.log("Prueba");
+		$('#select-type').val(null).trigger('change');
+		$('#select-brand').val(null).trigger('change');
+		$('#select-model').val(null).trigger('change');
+		$('#select-year').val(null).trigger('change');
+
+	});
+
+
+
+	// 	! -----------------------------------------------------------------------------------------
+	var data_type_vehicle_dropdown = "";
+	var data_brand_dropdown = "";
+	var data_model_dropdown = "";
+	var data_year_dropdown = "";
+
+	$('#select-type').select2({
+		language: "es",
+		placeholder: "Tipo de vehículo",
+		// 		allowClear: true,
+		width: 'resolve',
+	});
+	$('#select-brand').select2({
+		language: "es",
+		placeholder: "Marca",
+		// 		allowClear: true,
+		width: 'resolve',
+	});
+	$('#select-model').select2({
+		language: "es",
+		placeholder: "Modelo",
+		// 		allowClear: true,
+		width: 'resolve',
+	});
+	$('#select-year').select2({
+		language: "es",
+		placeholder: "Año",
+		// 		allowClear: true,
+		width: 'resolve',
+	});
+
+	function template_dropdown(cat_data) {
+		html = "";
+		if (cat_data) {
+			html += '<option></option>';
+			for (var element of cat_data) {
+				html += '<option value="' + element.slug + '">' + element.name + '</option>';
+			}
+		}
+		return html;
+	}
+
+
+
+	$('#select-type').on('change', function () {
+		data_type_vehicle_dropdown = $(this).val();
+		if (data_type_vehicle_dropdown != '') {
+			var sub_cat = category_tree.filter(function (element) {
+				return element.slug == data_type_vehicle_dropdown;
+			})
+			children.brand = sub_cat[0].children;
+			$('#select-brand').html(template_dropdown(children.brand));
+		}
+	});
+
+	$('#select-brand').on('change', function () {
+		data_brand_dropdown = $(this).val();
+		if (data_brand_dropdown != '') {
+			var sub_cat = children.brand.filter(function (element) {
+				return element.slug == data_brand_dropdown;
+			})
+			children.model = sub_cat[0].children;
+			$('#select-model').html(template_dropdown(children.model));
+		}
+
+
+	});
+
+	$('#select-model').on('change', function () {
+		data_model_dropdown = $(this).val();
+		if (data_model_dropdown != '') {
+			var sub_cat = children.model.filter(function (element) {
+				return element.slug == data_model_dropdown;
+			})
+			children.year = sub_cat[0].children;
+			$('#select-year').html(template_dropdown(children.year));
+		}
+
+	});
+
+	$('#select-year').on('change', function () {
+		data_year_dropdown = $(this).val();
+	});
+
+	$("#search_dropdown").click(function () {
+		let redirect = false;
+		if (data_type_vehicle_dropdown != "") {
+			data_type_vehicle_dropdown += '/';
+			redirect = true;
+		}
+		if (data_brand_dropdown != "") {
+			data_brand_dropdown += '/'
+			redirect = true;
+		}
+		if (data_model_dropdown != "") {
+			data_model_dropdown += '/';
+			redirect = true;
+		}
+		if (data_year_dropdown != "") {
+			data_year_dropdown += '/';
+			redirect = true;
+		}
+
+		let link = redirect ? 'https://importadorasubateria.com/product-category/' + data_type_vehicle_dropdown + data_brand_dropdown + data_model_dropdown + data_year_dropdown : 'https://importadorasubateria.com/shop/';
+		window.location.href = link;
+	})
+
+
+
+
+	// 	************************************************************************
+	// 	
+	// 	
+
+	function actualizarContenidoCheckout() {
+		jQuery.ajax({
+			url: MCM.ajax_url,
+			type: 'POST',
+			data: {
+				action: 'actualizar_contenido_checkout',
+				nonce: MCM.nonce
+			},
+			success: function (response) {
+				var data = JSON.parse(response);
+				var contenidoCheckout = data.contenido_checkout;
+
+				// Actualizar el contenido del checkout
+				jQuery('form.checkout').replaceWith(contenidoCheckout);
+			},
+		});
+	}
+
+	$('#payment_method_payphone').on('click', function () {
+		actualizarContenidoCheckout();
+	});
+});
+
+
+
+
+
+
+

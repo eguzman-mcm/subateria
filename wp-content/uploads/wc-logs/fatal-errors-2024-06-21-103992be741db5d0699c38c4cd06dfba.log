@@ -1,0 +1,7 @@
+2024-06-21T19:25:55+00:00 CRITICAL Uncaught TypeError: Argument 1 passed to WP_Rocket\Engine\Optimization\RUCSS\Database\Queries\UsedCSS::revert_to_pending() must be of the type int, string given, called in /home/subateria/public_html/wp-content/plugins/wp-rocket/inc/Engine/Optimization/RUCSS/Controller/UsedCSS.php on line 803 and defined in /home/subateria/public_html/wp-content/plugins/wp-rocket/inc/Engine/Optimization/RUCSS/Database/Queries/UsedCSS.php:444
+Stack trace:
+#0 /home/subateria/public_html/wp-content/plugins/wp-rocket/inc/Engine/Optimization/RUCSS/Controller/UsedCSS.php(803): WP_Rocket\Engine\Optimization\RUCSS\Database\Queries\UsedCSS->revert_to_pending('14906')
+#1 /home/subateria/public_html/wp-content/plugins/wp-rocket/inc/Engine/Optimization/RUCSS/Cron/Subscriber.php(121): WP_Rocket\Engine\Optimization\RUCSS\Controller\UsedCSS->clear_failed_urls()
+#2 /home/subateria/public_html/wp-includes/class-wp-hook.php(324): WP_Rocket\Engine\Optimization\RUCSS\Cron\Subscriber->cron_remove_failed_jobs()
+#3 /home/subateria/public_html/wp-in en /home/subateria/public_html/wp-content/plugins/wp-rocket/inc/Engine/Optimization/RUCSS/Database/Queries/UsedCSS.php en la línea 444
+

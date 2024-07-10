@@ -1,0 +1,96 @@
+# Translation of Plugins - ACF Theme Code for Advanced Custom Fields - Development (trunk) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - ACF Theme Code for Advanced Custom Fields - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-07-24 11:18:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - ACF Theme Code for Advanced Custom Fields - Development (trunk)\n"
+
+#: core/field-group-ui.php:80
+msgid "Generate theme code for ACF Blocks, Repeaters, Flexible Content and much more with ACF Theme Code Pro."
+msgstr "Genera código para temas de bloques de ACF, repetidores, contenido flexible y mucho más con ACF Theme Code Pro."
+
+#: core/field-group-ui.php:63
+msgid "To generate theme code, create some fields and then publish the field group."
+msgstr "Para generar el código del tema, crea algunos campos y luego publica el grupo de campos."
+
+#. Author URI of the plugin
+msgid "https://hookturn.io"
+msgstr "https://hookturn.io"
+
+#: core/field.php:397 core/locations.php:398
+msgid "Copy to clipboard"
+msgstr "Copiar al portapapeles"
+
+#: core/locations.php:269
+msgid "Location"
+msgstr "Ubicación"
+
+#: core/locations.php:300 core/locations.php:305
+msgid "Select a location to see the relevant theme code"
+msgstr "Selecciona una ubicación para ver el código del tema correspondiente"
+
+#: core/locations.php:273
+msgid "Select"
+msgstr "Selecciona"
+
+#. translators: %s: repeater field name
+#: render/group.php:40
+msgid "Warning: Group field %s has no sub fields"
+msgstr "Advertencia: el grupo de campos %s no tiene subcampos"
+
+#: render/file.php:24
+msgid "Download File"
+msgstr "Descargar archivo"
+
+#: core/field-group-ui.php:81
+msgid "ACF Theme Code Pro"
+msgstr "ACF Theme Code Pro"
+
+#: core/field-group-ui.php:81
+msgid "Upgrade to"
+msgstr "Actualiza a"
+
+#: core/ACFTC_Conflict.php:23
+msgid "Please activate your preferred version."
+msgstr "Por favor, activa la versión que prefieras."
+
+#. translators: %s: Hookturn URL
+#: core/field.php:347 core/locations.php:384
+msgid "Visit %s for more information."
+msgstr "Visita %s para más información."
+
+#. translators: %s: Field type
+#: core/field.php:356
+msgid "The `%s` field type is not supported in this version of the plugin."
+msgstr "El tipo de campo `%s` no es compatible en esta versión del plugin."
+
+#. translators: %s: Hookturn URL
+#: core/field.php:361
+msgid "Contact %s to request support for this field type."
+msgstr "Contacta con %s para solicitar ayuda para este tipo de campo."
+
+#. Plugin URI of the plugin
+msgid "https://hookturn.io/downloads/acf-theme-code-pro/"
+msgstr "https://hookturn.io/downloads/acf-theme-code-pro/"
+
+#. Author of the plugin
+msgid "Ben Pearson and Phil Kurth"
+msgstr "Ben Pearson y Phil Kurth"
+
+#. Plugin Name of the plugin
+msgid "Advanced Custom Fields: Theme Code"
+msgstr "Advanced Custom Fields: Theme Code"
+
+#: core/core.php:198
+msgid "Theme Code"
+msgstr "Código para el tema"
+
+#. Description of the plugin
+msgid "Generates theme code for ACF field groups to speed up development."
+msgstr "Genera el código del tema para los grupos de campos ACF con el fin de acelerar el desarrollo."

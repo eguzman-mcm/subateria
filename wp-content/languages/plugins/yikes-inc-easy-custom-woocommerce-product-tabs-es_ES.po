@@ -1,0 +1,417 @@
+# Translation of Plugins - Custom Product Tabs for WooCommerce - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Custom Product Tabs for WooCommerce - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-10-02 12:53:53+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.9\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Custom Product Tabs for WooCommerce - Stable (latest release)\n"
+
+#. Author of the plugin
+msgid "Code Parrots"
+msgstr "Code Parrots"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.codeparrots.com"
+msgstr "https://www.codeparrots.com"
+
+#: yikes-inc-easy-custom-woocommerce-product-tabs.php:359
+msgid "Thank you for using Custom Product Tabs for WooCommerce. Please consider leaving us %s on the WordPress.org plugin repository."
+msgstr "Gracias por usar Custom Product Tabs for WooCommerce. Por favor, plantéate dejarnos una %s en el repositorio de plugins de WordPress.org."
+
+#: yikes-inc-easy-custom-woocommerce-product-tabs.php:319
+msgid "Documentation"
+msgstr "Documentación"
+
+#: yikes-inc-easy-custom-woocommerce-product-tabs.php:318
+msgid "Saved Tabs"
+msgstr "Pestañas guardadas"
+
+#. translators: The placeholder is a URL to the WooCommerce plugin.
+#: yikes-inc-easy-custom-woocommerce-product-tabs.php:78
+msgid "Please activate %1s before activating Custom WooCommerce Product Tabs."
+msgstr "Por favor, activa %1s antes de activar Custom WooCommerce Product Tabs."
+
+#. translators: The placeholder is a URL to the WooCommerce plugin.
+#: yikes-inc-easy-custom-woocommerce-product-tabs.php:63
+msgid "Please install and activate %1s before activating Custom WooCommerce Product Tabs."
+msgstr "Por favor, instala y activa %1s antes de activar Custom WooCommerce Product Tabs."
+
+#: admin/page.yikes-woo-saved-tabs.php:25
+msgid "Dismiss this notice."
+msgstr "Descartar este aviso."
+
+#: admin/page.yikes-woo-saved-tabs-single.php:30
+#: admin/page.yikes-woo-saved-tabs.php:8
+msgid "Add New"
+msgstr "Añadir nueva"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:29
+msgid "New Tab"
+msgstr "Nueva pestaña"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:29
+msgid "Custom Product Tabs for WooCommerce "
+msgstr "Pestañas personalizadas para WooCommerce "
+
+#: admin/class.yikes-woo-tabs.php:340
+msgid "Uh oh! Something went wrong with saving. Please try again."
+msgstr "¡Uf, vaya! Algo ha salido mal al guardar. Por favor, inténtalo de nuevo."
+
+#: admin/class.yikes-woo-tabs.php:338
+msgid "Your tabs have been saved"
+msgstr "Tus pestañas se han guardado"
+
+#: admin/class.yikes-woo-tabs.php:331
+msgid "Could not find the product!"
+msgstr "¡No se ha podido encontrar el producto!"
+
+#: admin/class.yikes-woo-saved-tabs.php:59
+msgid "Are you sure you want to delete these tabs? This cannot be undone."
+msgstr "¿Seguro que quieres borrar estas pestañas? Esto no se puede deshacer."
+
+#: admin/class.yikes-woo-saved-tabs.php:58
+msgid "Are you sure you want to delete this tab?"
+msgstr "¿Seguro que quieres borrar esta pestaña?"
+
+#: admin/class.support.php:100
+msgid "our support forum on the WordPress Plugin Directory"
+msgstr "nuestro foro de soporte en el directorio de plugins de WordPress"
+
+#. translators: %s is a link to the the WordPress.org support forums.
+#: admin/class.support.php:99
+msgid "If you need help with free Custom Product Tabs, please post questions to %ss. We aim to respond to support requests within a week."
+msgstr "Si necesitas ayuda con Custom Product Tabs gratuito, por favor, publica tus dudas en %ss. Trataremos de responder las peticiones de soporte en una semana."
+
+#. translators: %s is a link to the
+#. https://yikesplugins.com/plugin/custom-product-tabs-pro/.
+#: admin/class.support.php:83
+msgid "Custom Product Tabs Pro users qualify for premium support. Check out %s!"
+msgstr "Los usuarios de Custom Product Tabs Pro tiene soporte premium. ¡Echa un vistazo a %s!"
+
+#: admin/class.support.php:74
+msgid "Knowledge Base"
+msgstr "Base de conocimiento"
+
+#: admin/class.settings.php:152
+msgid "Toggle the_content filter."
+msgstr "Alternar el filtro the_content."
+
+#. translators: %1$s is html markup for a heart icon. %2$s is an anchor tag
+#. (link) to https://codeparrots.com.
+#: admin/class.premium.php:105
+msgid "This plugin made with %1$s by %2$s"
+msgstr "Este plugin está hecho con %1$s por %2$s"
+
+#: admin/class.premium.php:77
+msgid "Show Us Some Love"
+msgstr "Dános algo de cariño"
+
+#: admin/class.settings.php:157
+msgid "Save Settings"
+msgstr "Guardar los ajustes"
+
+#: admin/class.settings.php:149
+msgid "If you're using a page builder and you're having issues toggle this setting on. This will allow other plugins to use the WordPress 'the_content' filter, while we use our own custom version."
+msgstr "Si estás usando un maquetador de páginas y estás teniendo problemas para activar este ajuste. Esto permitirá a otros plugins usar el filtro `the_content` de WordPress mientras usamos nuestra propia versión personalizada."
+
+#: admin/class.settings.php:148
+msgid "Use a custom filter for the_content"
+msgstr "Usar un filtro personalizado para `the_content`"
+
+#: admin/class.premium.php:119
+msgid "Create global tabs, add tabs to products based on categories or tags, add tab content to search results, and more!"
+msgstr "Crea pestañas globales, añade pestañas a productos basadas en categorías o etiquetas, añade el contenido de las pestañas a los resultados de búsqueda, ¡y más!"
+
+#: admin/page.yikes-woo-saved-tabs.php:5
+msgid "Custom Product Tabs for WooCommerce | Saved Tabs"
+msgstr "Custom Product Tabs for WooCommerce | Pestañas guardadas"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:74
+msgid "This is for your reference only."
+msgstr "Esto es solo para tu referencia."
+
+#: admin/page.yikes-woo-saved-tabs-single.php:71
+#: admin/page.yikes-woo-saved-tabs.php:62
+#: admin/page.yikes-woo-saved-tabs.php:82
+msgid "Tab Name"
+msgstr "Nombre de la pestaña"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:8
+msgid "It looks like something went wrong. Please %1sgo back%2s. and try again"
+msgstr "Parece que algo ha ido mal. Por favor %1svuelve atrás%2s e inténtalo de nuevo."
+
+#: admin/page.support.php:6
+msgid "Custom Product Tabs for WooCommerce | Support"
+msgstr "Custom Product Tabs for WooCommerce | Soporte"
+
+#: admin/page.premium.php:86
+msgid "Premium support with a ticket form accessible directly from your dashboard"
+msgstr "Soporte premium con un formulario de tickets accesible directamente desde tu escritorio"
+
+#: admin/page.premium.php:84
+msgid " Premium Support"
+msgstr "Soporte premium"
+
+#: admin/page.premium.php:80
+msgid "Make WordPress' and/or WooCommerce's search aware of Custom Product Tab information"
+msgstr "Haz que WordPress y/o WooCommerce incluyan en sus búsquedas la información de las pestañas de producto personalizadas"
+
+#: admin/page.premium.php:79
+msgid "Remove the tab title from tab content site-wide without needing a filter"
+msgstr "Quita el título de la pestaña del contenido de la pestaña en todas partes sin necesidad de filtros"
+
+#: admin/class.settings.php:146 admin/page.premium.php:77
+msgid "Settings"
+msgstr "Ajustes"
+
+#: admin/page.premium.php:73
+msgid "Assign saved tabs to products via the product's default bulk edit screen."
+msgstr "Asigna pestañas guardadas a productos desde la pantalla de edición en masa de productos por defecto."
+
+#: admin/page.premium.php:71
+msgid "WooCommerce Bulk Edit"
+msgstr "Edición en lote de WooCommerce"
+
+#: admin/page.premium.php:66
+msgid "Assign taxonomy terms to tabs or set tabs as global so they apply to all products."
+msgstr "Asigna términos de taxonomías a pestañas o configura pestañas como globales para que se apliquen a todos los productos."
+
+#: admin/page.premium.php:62
+msgid "Global Tabs & Taxonomy Tabs"
+msgstr "Pestañas globales y pestañas de taxonomías"
+
+#: admin/page.premium.php:56
+msgid "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>And More!</strong>"
+msgstr "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>¡Y más!</strong>"
+
+#: admin/page.premium.php:50
+msgid "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Premium Support</strong> - Get support via our form directly from your dashboard."
+msgstr "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Soporte premium</strong> - Obtén soporte con nuestro formulario directamente desde tu escritorio."
+
+#: admin/page.premium.php:44
+msgid "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Search</strong> - Make tab content searchable by WordPress' standard search or WooCommerce's search widget."
+msgstr "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Búsquedas</strong> - Haz que el contenido de las pestañas pueda buscarse en las búsquedas estándar del widget de búsqueda de WordPress o WooCommerce."
+
+#: admin/page.premium.php:38
+msgid "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>WooCommerce Bulk Edit</strong> - Assign tabs to products via WooCommerce's bulk editor."
+msgstr "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Edición en masa de WooCommerce</strong> - Asigna pestañas a productos desde el editor en masa de WooCommerce."
+
+#: admin/page.premium.php:32
+msgid "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Category/Tag Tabs</strong> - Assign tabs to products by category or tag."
+msgstr "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Pestañas de categorías/etiquetas</strong> - Asigna pestañas a productos por categoría o etiqueta."
+
+#: admin/page.premium.php:26
+msgid "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Global Tabs</strong> - Apply saved tabs to all of your products."
+msgstr "<span class=\"dashicons dashicons-thumbs-up\"></span> <strong>Pestañas globales</strong> - Aplica pestañas guardadas a todos tus productos."
+
+#: admin/page.premium.php:19
+msgid "Upgrade to %1sCustom Product Tabs Pro%2s for complete control of Tabs and enhanced features."
+msgstr "Actualiza a %1sCustom Product Tabs Pro%2s para un control completo de las pestañas y características mejoradas."
+
+#: admin/page.premium.php:13
+msgid "Upgrade to Pro"
+msgstr "Actualiza a Pro"
+
+#: admin/page.premium.php:5
+msgid "Custom Product Tabs for WooCommerce | Go Pro"
+msgstr "Custom Product Tabs for WooCommerce | Hazte Pro"
+
+#: admin/class.yikes-woo-saved-tabs.php:507
+#: admin/class.yikes-woo-saved-tabs.php:508
+msgid "Custom Product Tabs"
+msgstr "Pestañas de producto personalizadas"
+
+#: admin/class.yikes-woo-saved-tabs.php:293
+msgid "Uh oh. Something went wrong."
+msgstr "Ay ay. Algo ha salido mal."
+
+#: admin/class.yikes-woo-saved-tabs.php:289
+msgid "Could not find the tab. Please try again."
+msgstr "No se pudo encontrar la pestaña. Por favor, inténtalo de nuevo."
+
+#: admin/class.support.php:107
+msgid "Submit a Support Request"
+msgstr "Envía una petición de soporte"
+
+#: admin/class.support.php:92
+msgid "WordPress.org Support Forums"
+msgstr "Foros de soporte de WordPress.org"
+
+#. translators: %s is a link to the knowledge base.
+#: admin/class.support.php:73
+msgid "Before submitting a support request, please visit our %s where we have step-by-step guides and troubleshooting help."
+msgstr "Antes de enviar una petición de soporte, por favor, visita nuestra %s, donde tenemos guías paso a paso y ayuda en la solución de problemas."
+
+#: admin/class.support.php:44 admin/class.support.php:45
+msgid "Support"
+msgstr "Soporte"
+
+#: admin/class.premium.php:116 admin/class.premium.php:121
+#: admin/class.support.php:84
+msgid "Custom Product Tabs Pro"
+msgstr "Custom Product Tabs Pro"
+
+#: admin/class.premium.php:118
+msgid "Check out Custom Product Tabs Pro!"
+msgstr "¡Echa un vistazo a Custom Product Tabs Pro!"
+
+#: admin/class.premium.php:97
+msgid "Tweet"
+msgstr "Tuitear"
+
+#: admin/class.premium.php:93
+msgid "Tweet about us!"
+msgstr "¡Tuitea sobre nosotros!"
+
+#: admin/class.premium.php:81
+msgid "Leave a review!"
+msgstr "¡Deja una reseña!"
+
+#: admin/class.premium.php:49 admin/class.premium.php:50
+msgid "Go Pro"
+msgstr "Hazte Pro"
+
+#: admin/class.yikes-woo-generate-html.php:285
+msgid "Override Saved Tab"
+msgstr "Omitir pestaña guardada"
+
+#: admin/class.yikes-woo-generate-html.php:166
+msgid " Override Saved Tab"
+msgstr "Omite pestaña guardada"
+
+#: admin/class.yikes-woo-saved-tabs.php:67 admin/class.yikes-woo-tabs.php:64
+#: admin/class.yikes-woo-tabs.php:73
+msgid "Sorry! An error has occurred while trying to retrieve the editor. Please refresh the page and try again."
+msgstr "¡Lo siento! Ocurrió un error al tratar de mostrar el editor. Por favor, recarga la página e inténtalo de nuevo."
+
+#: admin/page.yikes-woo-saved-tabs.php:139
+msgid "There are no saved tabs. Add one!"
+msgstr "No hay pestañas guardadas. ¡Añade una!"
+
+#: admin/page.yikes-woo-saved-tabs.php:116
+#: admin/page.yikes-woo-saved-tabs.php:128
+msgid "Edit Tab"
+msgstr "Editar pestaña"
+
+#: admin/page.yikes-woo-saved-tabs.php:65
+#: admin/page.yikes-woo-saved-tabs.php:85
+msgid "Tab Content Preview"
+msgstr "Vista previa del contenido de la pestaña"
+
+#: admin/page.yikes-woo-saved-tabs.php:55
+#: admin/page.yikes-woo-saved-tabs.php:75
+msgid "Select All"
+msgstr "Seleccionar todas"
+
+#: admin/page.yikes-woo-saved-tabs.php:47
+msgid "Apply"
+msgstr "Aplicar"
+
+#: admin/page.yikes-woo-saved-tabs.php:45
+msgid "Delete"
+msgstr "Borrar"
+
+#: admin/page.yikes-woo-saved-tabs.php:44
+msgid "Bulk Actions"
+msgstr "Acciones en lote"
+
+#: admin/page.yikes-woo-saved-tabs.php:42
+msgid "Select bulk action"
+msgstr "Elige la acción en lote"
+
+#: admin/page.yikes-woo-saved-tabs.php:31
+msgid "Create and save tabs that you can add to multiple products."
+msgstr "Crea y guarda pestañas que puedes añadir a múltiples productos."
+
+#: admin/page.yikes-woo-saved-tabs.php:22
+msgid "Tab deleted!"
+msgstr "¡Pestaña borrada!"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:95
+#: admin/page.yikes-woo-saved-tabs.php:119
+msgid "Delete Tab"
+msgstr "Borrar pestaña"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:92
+msgid "Save Tab"
+msgstr "Guardar pestaña"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:80
+msgid "Tab Content"
+msgstr "Contenido de la pestaña"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:35
+msgid "Go Back to All Saved Tabs list"
+msgstr "Volver a la lista de todas las pestañas guardadas"
+
+#: admin/page.yikes-woo-saved-tabs-single.php:51
+msgid "Any updates made here will apply to all products using this tab."
+msgstr "Cualquier modificación que se haga aquí se aplicará a todos los productos que usen esta pestaña."
+
+#: admin/class.yikes-woo-generate-html.php:341
+msgid "Add a Saved Tab"
+msgstr "Añadir una pestaña guardada"
+
+#: admin/class.yikes-woo-generate-html.php:336
+msgid "Add a Tab"
+msgstr "Añadir una pestaña"
+
+#: admin/class.yikes-woo-generate-html.php:164
+#: admin/class.yikes-woo-generate-html.php:284
+msgid "Check this box to override the saved tab"
+msgstr "Marca esta casilla para sobreescribir la pestaña guardada"
+
+#: admin/class.yikes-woo-generate-html.php:137
+msgid "For help using Custom Tabs please visit our <a href='https://yikesplugins.com/support/knowledge-base/product/easy-custom-product-tabs-for-woocommerce/' target='_blank'>Knowledge Base</a>"
+msgstr "Para ayuda sobre cómo usar pestañas personalizadas visita nuestra <a href='https://yikesplugins.com/support/knowledge-base/product/easy-custom-product-tabs-for-woocommerce/' target='_blank'>base de conocimiento</a>"
+
+#: admin/class.yikes-woo-generate-html.php:71
+#: admin/class.yikes-woo-generate-html.php:215
+msgid "Custom Tab Title"
+msgstr "Título de la pestaña personalizada"
+
+#. Description of the plugin
+msgid "Extend WooCommerce to add and manage custom product tabs. Create as many product tabs as needed per product."
+msgstr "Amplía WooCommerce para poder añadir y gestionar pestañas personalizadas de producto. Crea tantas pestañas de producto como necesites."
+
+#. Plugin Name of the plugin
+msgid "Custom Product Tabs for WooCommerce"
+msgstr "Custom Product Tabs para WooCommerce"
+
+#: admin/class.yikes-woo-generate-html.php:231
+#: admin/class.yikes-woo-generate-html.php:269
+msgid "HTML and text to display."
+msgstr "HTML y texto a mostrar."
+
+#: admin/class.yikes-woo-generate-html.php:230
+#: admin/class.yikes-woo-generate-html.php:269
+msgid "Content"
+msgstr "Contenido"
+
+#: admin/class.yikes-woo-generate-html.php:71
+#: admin/class.yikes-woo-generate-html.php:215
+#: admin/page.yikes-woo-saved-tabs-single.php:63
+#: admin/page.yikes-woo-saved-tabs.php:59
+#: admin/page.yikes-woo-saved-tabs.php:79
+msgid "Tab Title"
+msgstr "Título de la pestaña"
+
+#: admin/class.yikes-woo-generate-html.php:180
+#: admin/class.yikes-woo-generate-html.php:254
+#: admin/class.yikes-woo-generate-html.php:296
+msgid "Remove Tab"
+msgstr "Quitar pestaña"
+
+#: admin/class.yikes-woo-generate-html.php:139
+msgid "Help Me!"
+msgstr "¡Ayúdame!"
+
+#: admin/class.yikes-woo-tabs.php:90
+msgid "Custom Tabs"
+msgstr "Pestañas personalizadas"
